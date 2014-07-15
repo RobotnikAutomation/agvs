@@ -1,0 +1,166 @@
+<?xml version="1.0"?>
+<robot>
+  <!-- ros_control plugin -->
+  <gazebo>
+    <plugin name="ros_control" filename="libgazebo_ros_control.so">
+       <robotNamespace>/agvs</robotNamespace>
+       <controlPeriod>0.001</controlPeriod>
+	   <robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
+    </plugin>
+  </gazebo>
+
+  <gazebo reference="base_footprint">
+    <material>Gazebo/Green</material>
+  </gazebo>
+  
+  <gazebo reference="base_link">
+    <material>Gazebo/Red</material>
+  </gazebo>
+
+  <gazebo reference="back_wheel">
+    <mu1 value="1.0"/> 
+    <mu2 value="1.0"/> 
+    <fdir1 value="0 0 0"/>
+    <kp value="1000000000.0"/> 
+    <kd value="1.0" />    
+    <material>Gazebo/Grey</material>
+  </gazebo>
+
+  <gazebo reference="front_wheel">
+    <mu1 value="1.0"/> 
+    <mu2 value="1.0"/> 
+    <fdir1 value="0 0 0"/>
+    <kp value="1000000000.0"/>
+    <kd value="1.0" />    
+    <material>Gazebo/Grey</material>
+  </gazebo>
+
+  <gazebo reference="front_motor_wheel">
+    <material>Gazebo/Blue</material>
+  </gazebo>
+
+  <gazebo reference="back_motor_wheel">
+    <material>Gazebo/Blue</material>
+  </gazebo>
+
+  <gazebo reference="side_wheel_right">
+    <mu1 value="1.0"/> 
+    <mu2 value="1.0"/> 
+    <fdir1 value="0 0 0"/>
+    <!-- kp value="1000000.0"/>
+    <kd value="1.0" / -->    
+    <!-- value ok for 25kg robot mass -->
+    <!-- kp value="10000.0"/>
+    <kd value="1.0" / -->
+    <kp value="1000000000.0"/>
+    <kd value="1.0"/>        
+    <material>Gazebo/Grey</material>
+  </gazebo>
+
+  <gazebo reference="side_wheel_left">
+    <mu1 value="1.0"/> <!-- 2.0 -->
+    <mu2 value="1.0"/> <!-- 0.5 -->
+    <kp value="1000000000.0"/>
+    <kd value="1.0"/>        
+    <fdir1 value="0 0 0"/>
+    <material>Gazebo/Grey</material>
+  </gazebo>
+
+  <gazebo reference="elevator_link">
+    <material>Gazebo/Grey</material>
+    <kp value="1000000000.0"/>
+    <kd value="1.0"/>  
+  </gazebo>
+
+  <!-- sick laser -->
+  <gazebo reference="laser_front">
+    <!-- sensor type="gpu_ray" name="head_hokuyo_sensor" -->
+    <sensor type="ray" name="front_sick_sensor">
+      <pose>0 0 0 0 0 0</pose>
+      <visualize>false</visualize>
+      <update_rate>30</update_rate>
+      <ray>
+        <scan>
+          <horizontal>
+            <samples>720</samples>
+            <resolution>1</resolution>
+            <min_angle>-1.570796</min_angle>
+            <max_angle>1.570796</max_angle>
+           <!--samples>1081</samples>
+           <resolution>1</resolution>
+           <min_angle>2.35619449</min_angle> 
+           <max_angle>-2.35619449</max_angle -->
+          </horizontal>
+        </scan>
+        <range>
+          <min>0.10</min>
+          <max>10.0</max>
+          <resolution>0.01</resolution>
+        </range>
+        <noise>
+          <type>gaussian</type>
+          <mean>0.0</mean>
+          <stddev>0.01</stddev>
+        </noise>
+      </ray>
+      <!-- plugin name="gazebo_ros_head_hokuyo_controller" filename="libgazebo_ros_gpu_laser.so" -->
+      <plugin name="gazebo_ros_front_sick_controller" filename="libgazebo_ros_laser.so">
+        <topicName>/scan</topicName>
+        <frameName>laser_front</frameName>
+      </plugin>
+    </sensor>
+  </gazebo>
+
+
+  <!-- sick laser -->
+  <!--gazebo reference="laser_back">
+    <sensor type="ray" name="back_sick_sensor">
+      <pose>0 0 0 0 0 0</pose>
+      <visualize>false</visualize>
+      <update_rate>30</update_rate>
+      <ray>
+        <scan>
+          <horizontal>
+            <samples>720</samples>
+            <resolution>1</resolution>
+            <min_angle>-1.570796</min_angle>
+            <max_angle>1.570796</max_angle>
+          </horizontal>
+        </scan>
+        <range>
+          <min>0.10</min>
+          <max>10.0</max>
+          <resolution>0.01</resolution>
+        </range>
+        <noise>
+          <type>gaussian</type>
+          <mean>0.0</mean>
+          <stddev>0.01</stddev>
+        </noise>
+      </ray>
+      
+      <plugin name="gazebo_ros_front_sick_controller" filename="libgazebo_ros_laser.so">
+        <topicName>/scan</topicName>
+        <frameName>laser_back</frameName>
+      </plugin>
+    </sensor>
+  </gazebo-->
+
+
+
+
+
+
+
+  
+  <gazebo>
+    <plugin name="ros_imu" filename="libgazebo_ros_imu.so">
+       <robotNamespace>/agvs</robotNamespace>
+       <topicName>imu_data</topicName>
+		<bodyName>imu_link </bodyName>
+		<serviceName>/imu_service</serviceName>
+        <gaussianNoise>0.005</gaussianNoise>		
+    </plugin>
+  </gazebo>
+  
+</robot>

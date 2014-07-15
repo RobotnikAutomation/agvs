@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<launch>
+
+  <!-- start purepursuit node -->
+  <node pkg="purepursuit_planner" type="purepursuit_planner_node" name="purepursuit_planner" output="screen">
+	<param name="position_source" value="MAP" type="string"/>
+	<param name="d_lookahear_min" value="0.4"/>
+  	<param name="kr" value="0.2"/>
+        <param name="desired_freq" value="50.0"/>
+ 	<param name="odom_topic" value="/agvs_robot_control/odom"/>
+        <param name="cmd_topic_vel" value="/agvs_robot_control/command"/>
+  </node>
+
+</launch>
+

@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<launch>
+
+ <!-- joy node -->
+  <node name="joy" pkg="joy" type="joy_node" respawn="true">
+    <param name="dev" type="string" value="/dev/input/js0" />
+    <param name="deadzone" value="0.12" />
+    <!-- param name="autorepeat_rate" value="10.0" type="double"/ -->
+    <param name="autorepeat_rate" value="10.0" type="double" />
+  </node>
+  
+  <node name="agvs_pad_node" pkg="agvs_pad" type="agvs_pad_node" output="screen">
+	<!-- param name="cmd_topic_vel" value="/agvs_controller/command" type="string"/ -->
+	<param name="cmd_topic_vel" value="/agvs_robot_control/command" type="string"/>
+  	<param name="cmd_service_io" value="/rly_08_node/set_digital_outputs" type="string"/>
+  
+  	<rosparam command="load" file="$(find agvs_pad)/launch/agvs_pad.yaml" />
+  </node>
+  
+</launch>
+

@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<launch>
+
+  <include file="$(find agvs_gazebo)/launch/agvs.launch" />
+  
+  <include file="$(find agvs_robot_control)/launch/agvs_robot_control.launch" />
+  
+  <include file="$(find agvs_pad)/launch/agvs_pad.launch" />
+  
+</launch>

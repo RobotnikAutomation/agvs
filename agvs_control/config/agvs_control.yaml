@@ -1,0 +1,42 @@
+agvs:
+# Velocity controllers
+#  joint_back_wheel_effort_controller:
+#    type: effort_controllers/JointEffortController
+#    joint: joint_back_wheel
+#    pid: {p: 1000.0, i: 500, d: 500.0}
+
+  joint_back_wheel_controller:
+    type: velocity_controllers/JointVelocityController
+    joint: joint_back_wheel
+    pid: {p: 1000.0, i: 0.01, d: 100.0}
+
+#  joint_front_wheel_effort_controller:
+#    type: effort_controllers/JointEffortController
+#    joint: joint_front_wheel
+#    pid: {p: 1000.0, i: 500, d: 500.0}
+
+  joint_front_wheel_controller:
+    type: velocity_controllers/JointVelocityController
+    joint: joint_front_wheel
+    pid: {p: 1000.0, i: 0.01, d: 100.0}
+
+# Position controllers
+  joint_back_motor_wheel_controller:
+    type: effort_controllers/JointPositionController
+    joint: joint_back_motor_wheel
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+# Be careful with the selection of the pid values, e.g. d: 50.0 produces a nan in the velocity ???
+
+  joint_front_motor_wheel_controller:
+    type: effort_controllers/JointPositionController
+    joint: joint_front_motor_wheel
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+    
+  joint_elevator_controller:
+    type: effort_controllers/JointPositionController
+    joint: elevator_joint
+    pid: {p: 10000.0, i: 10000.0, d: 500.0}
+  
+  joint_read_state_controller:
+    type: joint_state_controller/JointStateController 
+    publish_rate: 100.0

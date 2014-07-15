@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<launch>
+  <!-- Run the map server -->
+  <!-- rosrun map_server map_server -->
+  <!-- node name="map_server" pkg="map_server" type="map_server" args="$(find my_map_package)/my_map.pgm my_map_resolution" -->
+  <node name="map_server" pkg="map_server" type="map_server" args="$(find agvs_complete)/maps/willow.yaml"/>
+
+
+</launch>
+

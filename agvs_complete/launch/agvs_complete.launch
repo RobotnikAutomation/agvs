@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<launch>
+
+    <!-- start dspic_controller - reads lateral wheels and publishes differential odom -->
+    <node pkg="agvs_controller" type="dspic_controller" name="dspic_controller_node" output="screen" respawn="false">
+	<param name="port" value="/dev/ttyS0"/>
+        <param name="publish_tf" value="true"/>
+        <param name="odom_frame_id" value="/odom" type="string"/>
+        <param name="base_frame_id" value="/base_footprint" type="string"/>
+        <param name="desired_freq" value="50.0"/>
+    </node>
+
+    <!-- start laser sensor -->
+    <node pkg="s3000_laser" type="s3000_laser_node" name="s3000_laser_front" output="screen" respawn="false">
+	<param name="port" value="/dev/ttyUSB_FRONT_LASER" type="string"/>
+	<param name="frame_id" value="/laser_front" type="string"/>
+    </node>
+
+   <!-- start laser sensor -->
+    <node pkg="s3000_laser" type="s3000_laser_node" name="s3000_laser_back" output="screen" respawn="false">
+	<param name="port" value="/dev/ttyUSB_BACK_LASER" type="string"/>
+	<param name="frame_id" value="/laser_back" type="string"/>
+        <param name="publish_scan" value="false"/>
+    </node>
+    
+    <!-- start agvs_controller - communicates with the robot contorller and publishes ackerman odom --> 
+    <!-- start agvs_controller node -->
+    <node pkg="agvs_controller" type="agvs_controller" name="agvs_controller" output="screen" respawn="false">
+     <rosparam command="load" file="$(find agvs_controller)/launch/agvs_controller.yaml" />
+        <param name="odom_frame_id" value="/odom_ack" type="string"/>
+        <param name="base_frame_id" value="/base_footprint" type="string"/>
+        <param name="publish_tf" value="false"/>
+        <param name="desired_freq" value="50.0"/>
+    </node>
+   
+    <!-- start agvs_pad -->
+    <include file="$(find agvs_pad)/launch/agvs_pad.launch"/>
+
+    <!-- Description -->
+    <include file="$(find agvs_description)/launch/agvs.launch"/>
+
+
+    <!--node pkg="tf" type="static_transform_publisher" name="laser_front_broadcaster" args="0.772 0.0 0.140 0 0 0 base_link laser_front 20" /-->
+
+      <!-- start purepursuit node -->
+     <node pkg="purepursuit_planner" type="purepursuit_planner_node" name="purepursuit_planner" output="screen">
+	 <param name="position_source" value="MAP" type="string"/>
+	 <param name="d_lookahear_min" value="0.6"/>
+	 <param name="desired_freq" value="50.0"/>
+     </node>
+
+</launch>

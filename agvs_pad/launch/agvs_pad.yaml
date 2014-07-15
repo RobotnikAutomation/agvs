@@ -1,0 +1,28 @@
+scale_linear: 2.25
+scale_angular: 2.0 
+
+button_output_1: -1
+button_output_2: -1
+output_1: 1 
+output_2: 2
+desired_freq: 10.0
+
+# m/s
+max_linear_speed: 10.0
+# rad/s
+max_angular_position: 1.57
+axis_linear_speed: 1
+axis_angular_position: 2
+
+# GENERAL
+#button_dead_man: 11
+#button_speed_up: 12
+#button_speed_down: 14
+
+button_dead_man: 10
+button_speed_up: 11
+button_speed_down: 9
+button_up_car: 12
+button_down_car: 14
+
+

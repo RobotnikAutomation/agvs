@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<launch>
+
+  <!-- start purepursuit node -->
+  <node pkg="purepursuit_planner" type="path_marker_2.py" name="path_marker" output="screen">
+	<param name="position_source" value="MAP" type="string"/>
+  </node>
+
+</launch>
+
