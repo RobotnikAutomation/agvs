@@ -1,0 +1,10 @@
+<stack>
+  <description brief="agvs roboy">agvs</description>
+  <author>Robotnik</author>
+  <license>BSD</license>  
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/agvs</url>
+  <depend stack="ros" />
+</stack>
+
+
