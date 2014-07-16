@@ -35,7 +35,6 @@ find_package(catkin REQUIRED COMPONENTS
 
 
 catkin_package(
-  INCLUDE_DIRS include 
   CATKIN_DEPENDS 
      roscpp
      robotnik_msgs 
