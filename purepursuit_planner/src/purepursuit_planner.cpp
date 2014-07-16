@@ -29,7 +29,7 @@
 #include <planner_msgs/GoToAction.h>
 #include <planner_msgs/goal.h>
 #include <geometry_msgs/Pose2D.h>
-#include <s3000_laser/enable_disable.h>
+//#include <s3000_laser/enable_disable.h>
 
 
 #define ODOM_TIMEOUT_ERROR			0.2				// max num. of seconds without receiving odom values
@@ -793,8 +793,8 @@ public:
 		private_node_handle_.param("kr", Kr, AGVS_DEFAULT_KR);
 		private_node_handle_.param<std::string>("position_source", position_source_, "ODOM");
 		private_node_handle_.param("desired_freq", desired_freq_, desired_freq_);
-		private_node_handle_.param<std::string>("name_sc_enable_frot_laser_", name_sc_enable_front_laser_, "/s3000_laser_front/enable_disable");
-		private_node_handle_.param<std::string>("name_sc_enable_back_laser", name_sc_enable_back_laser_, "/s3000_laser_back/enable_disable"	);
+		//private_node_handle_.param<std::string>("name_sc_enable_frot_laser_", name_sc_enable_front_laser_, "/s3000_laser_front/enable_disable");
+		//private_node_handle_.param<std::string>("name_sc_enable_back_laser", name_sc_enable_back_laser_, "/s3000_laser_back/enable_disable"	);
 		
 	
 		// From Component class
@@ -830,13 +830,13 @@ public:
         action_server_goto.registerPreemptCallback(boost::bind(&purepursuit_planner_node::PreemptCB, this));
         
         // Services
-        sc_enable_front_laser_ = private_node_handle_.serviceClient<s3000_laser::enable_disable>(name_sc_enable_front_laser_);
-        sc_enable_back_laser_ = private_node_handle_.serviceClient<s3000_laser::enable_disable>(name_sc_enable_back_laser_);
+        //sc_enable_front_laser_ = private_node_handle_.serviceClient<s3000_laser::enable_disable>(name_sc_enable_front_laser_);
+        //sc_enable_back_laser_ = private_node_handle_.serviceClient<s3000_laser::enable_disable>(name_sc_enable_back_laser_);
         
 		ROS_INFO("%s::ROSSetup(): odom_topic = %s, command_topic_vel = %s, position source = %s, desired_hz=%.1lf, min_lookahead = %.1lf, max_lookahead = %.1lf, kr = %.2lf", sComponentName.c_str(), odom_topic_.c_str(),
 		 cmd_topic_vel_.c_str(), position_source_.c_str(), desired_freq_, d_lookahear_min_, d_lookahear_max_, Kr);
 		
-		ROS_INFO("%s::ROSSetup(): laser_topics: front -> %s, back -> %s", sComponentName.c_str(), name_sc_enable_front_laser_.c_str(), name_sc_enable_back_laser_.c_str());
+		//ROS_INFO("%s::ROSSetup(): laser_topics: front -> %s, back -> %s", sComponentName.c_str(), name_sc_enable_front_laser_.c_str(), name_sc_enable_back_laser_.c_str());
 		
 		//last_command_time = ros::Time::now();
 	}
@@ -1752,7 +1752,7 @@ public:
 		* Disables laser back, enables laser front
 	*/
 	bool SetLaserFront(){
-		s3000_laser::enable_disable srv;
+		/*s3000_laser::enable_disable srv;
 		
 		srv.request.value = false;
 		sc_enable_back_laser_.call(srv);
@@ -1760,14 +1760,14 @@ public:
 		
 		srv.request.value = true;
 		sc_enable_front_laser_.call(srv);
-		ROS_INFO("%s::SetLaserFront: Setting laser front to true, ret = %d", sComponentName.c_str(), srv.response.ret);
+		ROS_INFO("%s::SetLaserFront: Setting laser front to true, ret = %d", sComponentName.c_str(), srv.response.ret);*/
 	}
 	
 	/*! \fn void SetLaserBack()
 		* Disables laser front, enables laser back
 	*/
 	bool SetLaserBack(){
-		s3000_laser::enable_disable srv;
+		/*s3000_laser::enable_disable srv;
 		
 		srv.request.value = false;
 		sc_enable_front_laser_.call(srv);
@@ -1775,7 +1775,7 @@ public:
 		
 		srv.request.value = true;
 		sc_enable_back_laser_.call(srv);
-		ROS_INFO("%s::SetLaserBack: Setting laser back to true, ret = %d", sComponentName.c_str(), srv.response.ret);
+		ROS_INFO("%s::SetLaserBack: Setting laser back to true, ret = %d", sComponentName.c_str(), srv.response.ret);*/
 	}
 
 }; // class purepursuit_planner_node

@@ -1,14 +1,14 @@
 <?xml version="1.0"?>
 <package>
   <name>agvs_robot_control</name>
-  <version>1.0.0</version>
+  <version>0.1.0</version>
   <description>The agvs_robot_control package</description>
 
   <!-- One maintainer tag required, multiple allowed, one person per tag --> 
   <!-- Example:  -->
   <!-- <maintainer email="jane.doe@example.com">Jane Doe</maintainer> -->
-  <maintainer email="info@robotnik.es">Robotnik</maintainer>
-
+  <maintainer email="rguzman@robotnik.es">Roberto Guzmán</maintainer>
+  <maintainer email="rnavarro@robotnik.es">Román Navarro</maintainer>
 
   <!-- One license tag required, multiple allowed, one license per tag -->
   <license>BSD</license>
@@ -22,7 +22,7 @@
   <!-- Author tags are optional, mutiple are allowed, one per tag -->
   <!-- Authors do not have to be maintianers, but could be -->
   <!-- Example: -->
-  <!-- <author email="jane.doe@example.com">Jane Doe</author> -->
+  <author email="rguzman@robotnik.es">Roberto Guzmán</author>
 
 
   <!-- The *_depend tags are used to specify dependencies -->
