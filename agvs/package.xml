@@ -16,14 +16,14 @@
 
   <buildtool_depend>catkin</buildtool_depend>
   
-  <run_depend>guardian_control</run_depend>
-  <run_depend>guardian_description</run_depend>
-  <run_depend>guardian_gazebo</run_depend>
-  <run_depend>guardian_joystick</run_depend>
-  <run_depend>guardian_robot_control</run_depend>
-  <run_depend>lwa4p_description</run_depend>
-  <run_depend>robotnik_wam_description</run_depend>
-
+  <run_depend>agvs_complete</run_depend>
+  <run_depend>agvs_control</run_depend>
+  <run_depend>agvs_description</run_depend>
+  <run_depend>agvs_gazebo</run_depend>
+  <run_depend>agvs_pad</run_depend>
+  <run_depend>agvs_robot_control</run_depend>
+  <run_depend>planner_msgs</run_depend>
+  <run_depend>purepursuit_planner</run_depend>
 
   <export><metapackage/></export>
 </package>
