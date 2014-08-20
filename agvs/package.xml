@@ -2,7 +2,7 @@
 <package>
   <name>agvs</name>
   <version>0.1.0</version>
-  <description>The agvs package. This package contains all the components to simulate the AGVS robot</description>
+  <description>The agvs package. This package contains all the components to simulate the AGVS robot. An ackermann type robot intended for logistics transport.</description>
 
  
   <maintainer email="rnavarro@robotnik.es">Román Navarro</maintainer>
@@ -13,6 +13,8 @@
   <license>BSD</license>
 
   <url type="website">http://wiki.ros.org/agvs</url>
+  <url type="repository">https://github.com/RobotnikAutomation/agvs</url>
+  <url type="bugtracker">https://github.com/RobotnikAutomation/agvs/issues</url>
 
   <buildtool_depend>catkin</buildtool_depend>
   
